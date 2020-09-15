@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  _userApiurl: (<any>window).config.dev.ApiUrl  
+  _userApiurl: 'http://localhost:3000/api/user/'  
 };

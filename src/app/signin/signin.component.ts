@@ -20,8 +20,8 @@ export class SigninComponent implements OnInit {
   constructor(private fb: FormBuilder, private service: SigninService, private router: Router, private login: GlobalServices,
     private loaderService: LoaderService,public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.SignInForm = this.fb.group({
-      UserName: ['', [Validators.required, Validators.minLength(3)]],
-      Password: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
     });
     this.toastr.setRootViewContainerRef(vcr); 
   }
@@ -34,10 +34,11 @@ export class SigninComponent implements OnInit {
   signIn(): void {   
     this.loaderService.display(true); 
     let Signindata = this.SignInForm.value;
-    this.name = Signindata.UserName;
+    this.name = Signindata.username;
     this.service.Sign(Signindata)
   //  .retry(3)
     .subscribe((resp) => {     
+      
         this.SignInForm.reset(),
         this.loaderService.display(false);
         this.router.navigate(['/search']);   
