@@ -9,7 +9,7 @@ export class SigninService {
 
   constructor(private http:Http) { }
   Sign(resumedata): Observable<Response> {
-    let url=environment._userApiurl+'login/';
+    let url=environment._userApiurl+'user/login/';
     let header = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: header });
     
@@ -18,7 +18,8 @@ export class SigninService {
         .post(url,JSON.stringify(resumedata),options)
         .map(
           (response:Response)=>{
-           
+            console.log(JSON.parse(response['_body'])['token']);
+            localStorage.setItem('token', JSON.parse(response['_body'])['token']);
             return response;
           })
         .catch(this.handleerror)
