@@ -17,14 +17,15 @@
     <div class="job-postdetails post-resume">
       <div class="row">
         <div class="col-md-8 clearfix">
-          <form novalidate (ngSubmit)="save()" [formGroup]="postresumeForm">
-            <fieldset>
+          <fieldset>
+         <!--  <form novalidate (ngSubmit)="save()" [formGroup]="postresumeForm">
+            
               
                 <router-outlet>
                     <span *ngIf="showLoader" class="loading">Loading...</span>
                 </router-outlet>
             
-              <!-- postdetails -->
+              
               <div _ngcontent-c3="" class="section express-yourself">
                 <h4 _ngcontent-c3="">Field marked with <span _ngcontent-c3="" style="color:red">*</span> are required fields</h4>
                 <div _ngcontent-c3="" class="row form-group">
@@ -89,7 +90,7 @@
                     </div>
 
                     
-                    <!---->
+                    
                   </div>
                   </table>
                 </div>
@@ -101,56 +102,93 @@
               </div>
 
 
-              
-              <!-- career-objective -->
-
-
-              <!-- work-history -->
-
-
-              <!-- education-background -->
-
-
-              <!-- special-qualification -->
-
-
-              <!-- language-proficiency -->
-
-
-              <!-- person-details -->
-
-              
-              
-              <!-- special-qualification -->
+           
             </fieldset>
+          </form> -->
+          <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
+
+            <p class="h4 mb-4">Sign up</p>
+          
+            <div class="form-row mb-4">
+                <div class="col">
+                    <input type="text" formControlName="username" id="defaultRegisterFormUserName" class="form-control" placeholder="username">
+                </div><br/>
+                <div class="col">
+                    <input type="password" formControlName="password" id="defaultRegisterUserName" class="form-control" placeholder="password">
+                </div>
+            </div>
+            <br/>
+            <div   class="custom-control custom-radio">
+							<input id="stagiaire" type="radio" class="custom-control-input" value="1" name="role" formControlName="role">
+              <label class="custom-control-label" for="stagiaire">Stagiaire</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input id="entreprise" type="radio" class="custom-control-input" value="0" name="role" formControlName="role" checked>
+              <label class="custom-control-label" for="entreprise">Entreprise</label>
+            </div>
+            <br/>
+            <div *ngIf="this.userForm.value['role']==1" class="form-row mb-4" formGroupName="stagiaire">
+                                        <p class="h4 mb-4">stagiare info </p><br>
+                                        <div class="col">
+                                          <input type="text" formControlName="nom" id="defaultRegisterFormnom" class="form-control" placeholder="nom">
+                                              </div><br/>
+                                         <div class="col">
+                                            <input type="text" formControlName="prenom" id="defaultRegisterFormprenom" class="form-control" placeholder="prenom">
+                                        </div><br/>
+                                        <div class="col">
+                                          <input type="text" formControlName="cin" id="defaultRegisterFormcin" class="form-control" placeholder="cin">
+                                      </div><br/>
+                                      <div class="col">
+                                      <input type="date" formControlName="dateNaissance" id="defaultRegisterFormdateNaissance" class="form-control" placeholder="dateNaissance">
+                                    </div><br/>
+                                    <div class="col">
+                                     <input type="text" formControlName="specialite" id="defaultRegisterFormspecialite" class="form-control" placeholder="specialite">
+                                  </div><br/>
+                                  <div class="col">
+                                    <input type="text" formControlName="diplome" id="defaultRegisterFormdiplome" class="form-control" placeholder="diplome">
+                               </div><br/>
+                                <div class="col">
+                                  <input type="text" formControlName="tele" id="defaultRegisterFormtele" class="form-control" placeholder="tele">
+                              </div><br/>
+                             
+                            <div class="col">
+                              <input type="email" formControlName="email" id="defaultRegisterFormemail" class="form-control" placeholder="email">
+                          </div><br/>
+
+            </div>
+            <div *ngIf="this.userForm.value['role']==0" class="form-row mb-4" formGroupName="entreprise">
+                                      <p class="h4 mb-4">entreprise info </p><br>
+                                      <div class="col">
+                                        <input type="text" formControlName="nom" id="defaultRegisterFormnom" class="form-control" placeholder="nom">
+                                            </div><br/>
+                                            <div class="col">
+                                              <input type="text" formControlName="ville" id="defaultRegisterFormville" class="form-control" placeholder="ville">
+                                                 </div><br/>
+                                          <div class="col">
+                                          <input type="text" formControlName="specialite" id="defaultRegisterFormspecialite" class="form-control" placeholder="specialite">
+                                        </div><br/>
+        
+                                      <div class="col">
+                                        <input type="number" formControlName="tele" id="defaultRegisterFormtele" class="form-control" placeholder="tele">
+                                        </div><br/>
+    
+                                  <div class="col">
+                                    <input type="email" formControlName="email" id="defaultRegisterFormemail" class="form-control" placeholder="email">
+                                </div><br/>
+
+            </div>
+            <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+          
+            <hr>
+          
           </form>
-          <!-- form -->
-          <div class="buttons">
-            <button (click)="save()" class="btn btn-primary" [disabled]="!postresumeForm.valid">Post Profile</button>
-            <button (click)="clear()" class="btn btn-danger">Cancel</button>
-          </div>
+        </fieldset>
+          
         </div>       
        
         <!-- quick-rules -->
-        <div class="col-md-4">
-          <div class="section quick-rules">
-            <h4>Quick rules</h4>
-            <p class="lead">Posting an ad on
-              <a >Sankeerthi</a> is free! However, all ads must follow our rules:</p>
-
-            <ul>
-              <li>Make sure you post in the correct category.</li>
-              <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
-              <li>Do not upload pictures with watermarks.</li>
-              <li>Do not post ads containing multiple items unless it's a package deal.</li>
-              <li>Do not put your email or phone numbers in the title or description.</li>
-              <li>Make sure you post in the correct category.</li>
-              <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
-              <li>Do not upload pictures with watermarks.</li>
-              <li>Do not post ads containing multiple items unless it's a package deal.</li>
-            </ul>
-          </div>
-        </div>
+        
         <!-- quick-rules -->
       </div>
       <!-- photos-ad -->

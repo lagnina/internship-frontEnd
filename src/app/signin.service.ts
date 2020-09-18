@@ -25,6 +25,57 @@ export class SigninService {
           })
         .catch(this.handleerror)
 }
+
+Signup(userData,stagiareData?,entrepriseData?) {
+  let url=environment._userApiurl+'user/signup/';
+  let header = new Headers({ 'Content-Type': 'application/json' });
+  let options = new RequestOptions({ headers: header });
+  let username: String;
+  let role;
+  
+      this
+      .http
+      .post(url,JSON.stringify(userData),options)
+      .map(
+        (response:Response)=>{
+          username = JSON.parse(response['_body'])['username'];
+          role = JSON.parse(response['_body'])['role'][0]
+          console.log(role);
+          console.log(response)
+          if(role == "1"){
+            console.log('tgsjsjjjkkkfdhs');
+            const url1=environment._userApiurl+'stagiaire/add/';
+            stagiareData['username']=username;
+            stagiareData['tele']=parseInt(stagiareData['tele']);
+            this
+          .http
+          .post(url1,JSON.stringify(stagiareData),options)
+          .map(
+            (response:Response)=>{
+              console.log(response)
+            })
+          .catch(this.handleerror).subscribe()
+          }else{
+            const url1=environment._userApiurl+'entreprise/add/';
+            entrepriseData['username']=username;
+            entrepriseData['tele']=parseInt(entrepriseData['tele']);
+            this
+          .http
+          .post(url1,JSON.stringify(entrepriseData),options)
+          .map(
+            (response:Response)=>{
+              console.log(response)
+              
+            })
+          .catch(this.handleerror).subscribe()
+    
+          }
+        })
+      .catch(this.handleerror).subscribe()
+
+     
+      
+}
 //  Use scound type requset
        //return this.http.post(url,JSON.stringify(resumedata),options)
 
