@@ -74,7 +74,8 @@ export class SearchComponent implements OnInit {
     
   }
   loadListData() {
-    this.jobservice.getList().subscribe((resp: Response) => {     
+    this.jobservice.getList().subscribe((resp: Response) => { 
+      console.log(resp);    
       this.jobdata=resp;     
       //this.totaljobs=this.jobdata.length;
       this.Pageindex= 1;

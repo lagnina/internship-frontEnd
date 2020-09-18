@@ -20,6 +20,7 @@ export class SigninService {
           (response:Response)=>{
             console.log(JSON.parse(response['_body'])['token']);
             localStorage.setItem('token', JSON.parse(response['_body'])['token']);
+            localStorage.setItem('role',JSON.parse(response['_body'])['user']['role']);
             return response;
           })
         .catch(this.handleerror)

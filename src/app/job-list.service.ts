@@ -15,8 +15,10 @@ export class JobListService {
     return this.http.get(url).map((response:Response)=>{return response.json();}).catch(this.handleerror);
 }
 getList(): Observable<Response> {
-  let url=environment._userApiurl+'getJobposteddetails';  
-  return this.http.get(url).map((response:Response)=>{return response.json();}).catch(this.handleerror);
+  let headers = new Headers({ 'Content-Type': 'application/json' ,'Authorization': 'Bearer '+localStorage.getItem('token') });
+  let options = new RequestOptions({ headers: headers });
+  let url=environment._userApiurl+'offre/list/';  
+  return this.http.get(url,options).map((response:Response)=>{return response.json();}).catch(this.handleerror);
 }
 
 getSearchData(searchdata): Observable<Response> {
