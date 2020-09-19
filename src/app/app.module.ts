@@ -28,9 +28,10 @@ import { RestrictTodayDirective } from './restrict-today.directive';
 import { SampleComponent } from './sample/sample.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { OffreFormComponent } from './offre-form/offre-form.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,    
     HeaderComponent,
     FooterComponent,
@@ -38,9 +39,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ServicesComponent,
     PostResumeComponent,
     demandeComponent,
-    offerComponent,SigninComponent, SearchComponent, RestrictTodayDirective, SampleComponent
-    
-  ],
+    offerComponent,SigninComponent, SearchComponent, RestrictTodayDirective, SampleComponent,
+      OffreFormComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,FormsModule,ReactiveFormsModule,RatingModule,HttpModule,NgxPaginationModule,ToastModule.forRoot(),
