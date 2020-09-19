@@ -4,9 +4,9 @@ import 'rxjs/Rx';
 import {Http,Response,Request, RequestOptions,Headers} from '@angular/http';
 import {environment} from '../environments/environment';
 
+
 @Injectable()
 export class SigninService { 
-
   constructor(private http:Http) { }
   Sign(resumedata): Observable<Response> {
     let url=environment._userApiurl+'user/login/';
@@ -20,7 +20,8 @@ export class SigninService {
           (response:Response)=>{
             console.log(JSON.parse(response['_body'])['token']);
             localStorage.setItem('token', JSON.parse(response['_body'])['token']);
-            localStorage.setItem('role',JSON.parse(response['_body'])['user']['role']);
+            console.log(JSON.parse(response['_body'])['user']['role']);
+            localStorage.setItem('role',JSON.parse(response['_body'])['user']['role'][0]);
             return response;
           })
         .catch(this.handleerror)
@@ -83,5 +84,18 @@ Signup(userData,stagiareData?,entrepriseData?) {
 handleerror(error:Response) {
   return Observable.throw(error.statusText);
 }
+IsLoggedIn():boolean{
+  
+    const token = localStorage.getItem('token');
+    
+    if(token != null){
+      
+      return true;
+    }
 
+    return false;
+    
+  
+  
+}
 }

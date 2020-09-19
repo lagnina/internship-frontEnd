@@ -23,6 +23,7 @@ import { SearchComponent } from './search/search.component';
 import {LoaderService} from './loader.service';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AuthGuardGuard}from './auth-guard.service'
 
 import { RestrictTodayDirective } from './restrict-today.directive';
 import { SampleComponent } from './sample/sample.component';
@@ -47,7 +48,7 @@ import { OffreFormComponent } from './offre-form/offre-form.component';
     AppRoutingModule,FormsModule,ReactiveFormsModule,RatingModule,HttpModule,NgxPaginationModule,ToastModule.forRoot(),
     BrowserAnimationsModule,BsDatepickerModule.forRoot()
   ],
-  providers: [PostresumeService,SigninService,GlobalServices,JobListService,LoaderService],
+  providers: [PostresumeService,SigninService,GlobalServices,JobListService,LoaderService,AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

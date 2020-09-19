@@ -8,18 +8,18 @@ import {PostResumeComponent} from './post-resume/post-resume.component';
 import {ServicesComponent}  from './services/services.component';
 import {SigninComponent} from './signin/signin.component';
 import {SearchComponent} from './search/search.component';
+import { AuthGuardGuard } from './auth-guard.service';
 
 const routes: Routes =[
   { path:'home',component:HomeComponent},
-  { path:'postresume',component:PostResumeComponent},
-  { path:'service',component:ServicesComponent},
-  { path:'demande',component:demandeComponent},
-  { path:'offer',component:offerComponent},
-  {path:'signin',component:SigninComponent},
-  {path:'search',component:SearchComponent},
+  { path:'signup',component:PostResumeComponent},
+  { path:'service',component: ServicesComponent,canActivate:[AuthGuardGuard]},
+  { path:'demande',component: demandeComponent,canActivate:[AuthGuardGuard]},
+  { path:'offer',component: offerComponent,canActivate:[AuthGuardGuard]},
+  {path:'signin',component: SigninComponent},
+  {path:'search',component: SearchComponent,canActivate:[AuthGuardGuard]},
   { path:'',redirectTo: 'home', pathMatch: 'full' },
-   
-  ];
+   ];
 
 
 @NgModule({

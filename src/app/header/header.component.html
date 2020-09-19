@@ -15,7 +15,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="https://www.google.co.in/?gfe_rd=cr&dcr=0&ei=P8eDWtbTJsScX5W-gegH"><img class="img-responsive himage" src="assets/images/ico/icon2.png" alt="Logo"></a>
+        <a class="navbar-brand" href="https://github.com/lagnina"><img class="img-responsive himage" src="assets/images/ico/logo-251.png" alt="Logo"></a>
       </div>
       <!-- /navbar-header -->
       
@@ -41,10 +41,10 @@
           <!-- <li><a routerLink="/home">Register</a></li> -->
         </ul><!-- sign-in -->					
 
-        <a routerLink="/postresume" class="btn">Post Your Resume</a>
+        <a *ngIf="!isLogged()" routerLink="/postresume" class="btn">sign up</a>
       </div>
       <!-- nav-right -->
-      <div *ngIf="global.getUserName() == null;" class="nav-right">Welcome to Sankeerthi Staffing Solutions</div>
+      <div *ngIf="global.getUserName() == null;" class="nav-right">Welcome to Lagnina Staffing Solutions</div>
       <div *ngIf="global.getUserName() != null;" class="nav-right">Hi, {{global.getUserName()}}!</div>
     </div><!-- container -->
   </nav><!-- navbar -->
