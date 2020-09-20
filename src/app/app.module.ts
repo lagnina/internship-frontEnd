@@ -30,9 +30,10 @@ import { SampleComponent } from './sample/sample.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { OffreFormComponent } from './offre-form/offre-form.component';
+import { DemandeFormComponent } from './demande-form/demande-form.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,    
     HeaderComponent,
     FooterComponent,
@@ -41,7 +42,8 @@ import { OffreFormComponent } from './offre-form/offre-form.component';
     PostResumeComponent,
     demandeComponent,
     offerComponent,SigninComponent, SearchComponent, RestrictTodayDirective, SampleComponent,
-      OffreFormComponent
+      OffreFormComponent,
+      DemandeFormComponent
    ],
   imports: [
     BrowserModule,
