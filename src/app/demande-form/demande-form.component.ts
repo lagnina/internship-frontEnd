@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { GlobalServices } from '../GlobalService.component';
 import { LoaderService } from '../loader.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { LoaderService } from '../loader.service';
 export class DemandeFormComponent implements OnInit {
 demandeForm : FormGroup;
   constructor(private fb:FormBuilder,
-    private loaderService: LoaderService , public toaster : ToastsManager) { }
+    private loaderService: LoaderService , public toaster : ToastsManager,private globalService: GlobalServices) { }
 
   ngOnInit() {
     this.demandeForm = this.fb.group ({
@@ -30,7 +31,6 @@ demandeForm : FormGroup;
 
 }
 onSubmit(){
-
-  console.log(this.demandeForm.value)
+this.globalService.addDemande(this.demandeForm.value,localStorage.getItem('username'));
 }
 }
