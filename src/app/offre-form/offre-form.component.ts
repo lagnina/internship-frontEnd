@@ -25,7 +25,7 @@ export class OffreFormComponent implements OnInit {
       dateFin :[''],
       specialite :[''],
       description :[''],
-      NbrPersonne :[''],
+      nbrPersonne :[''],
       remuneration:[''],
       niveau:['']
 

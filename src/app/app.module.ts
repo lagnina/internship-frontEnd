@@ -31,9 +31,12 @@ import { SampleComponent } from './sample/sample.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { OffreFormComponent } from './offre-form/offre-form.component';
 import { DemandeFormComponent } from './demande-form/demande-form.component';
+import { OfferListComponent } from './offer-list/offer-list.component';
+import { DemandeListComponent } from './demande-list/demande-list.component';
+
 
 @NgModule({
-  declarations: [		
+  declarations: [				
     AppComponent,    
     HeaderComponent,
     FooterComponent,
@@ -43,7 +46,9 @@ import { DemandeFormComponent } from './demande-form/demande-form.component';
     demandeComponent,
     offerComponent,SigninComponent, SearchComponent, RestrictTodayDirective, SampleComponent,
       OffreFormComponent,
-      DemandeFormComponent
+      OfferListComponent,
+      DemandeFormComponent,
+      DemandeListComponent
    ],
   imports: [
     BrowserModule,

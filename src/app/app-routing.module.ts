@@ -9,15 +9,28 @@ import {ServicesComponent}  from './services/services.component';
 import {SigninComponent} from './signin/signin.component';
 import {SearchComponent} from './search/search.component';
 import { AuthGuardGuard } from './auth-guard.service';
+import { OffreFormComponent } from './offre-form/offre-form.component';
+import { OfferListComponent } from './offer-list/offer-list.component';
+import { DemandeListComponent } from './demande-list/demande-list.component';
+import { DemandeFormComponent } from './demande-form/demande-form.component';
 
 const routes: Routes =[
   { path:'home',component:HomeComponent},
   { path:'signup',component:PostResumeComponent},
   { path:'service',component: ServicesComponent,canActivate:[AuthGuardGuard]},
-  { path:'demande',component: demandeComponent,canActivate:[AuthGuardGuard]},
-  { path:'offer',component: offerComponent,canActivate:[AuthGuardGuard]},
+  { path:'demande',component: demandeComponent,canActivate:[AuthGuardGuard],children:[
+    {path: '', redirectTo: 'list', pathMatch: 'full'}, 
+      {path: 'list', component: DemandeListComponent}, 
+      {path: 'form', component: DemandeFormComponent}, 
+  ]},
+  { path:'offer',component: offerComponent,canActivate:[AuthGuardGuard],children:[
+    {path: '', redirectTo: 'list', pathMatch: 'full'}, 
+      {path: 'list', component: OfferListComponent}, 
+      {path: 'form', component: OffreFormComponent}, 
+  ]},
   {path:'signin',component: SigninComponent},
   {path:'search',component: SearchComponent,canActivate:[AuthGuardGuard]},
+  { path:'offerform',component: OffreFormComponent,canActivate:[AuthGuardGuard]},
   { path:'',redirectTo: 'home', pathMatch: 'full' },
    ];
 
