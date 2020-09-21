@@ -31,6 +31,6 @@ demandeForm : FormGroup;
 
 }
 onSubmit(){
-this.globalService.addDemande(this.demandeForm.value,localStorage.getItem('username'));
+this.globalService.addDemande(this.demandeForm.value,localStorage.getItem('UserName'));
 }
 }

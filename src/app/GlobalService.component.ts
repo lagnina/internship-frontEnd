@@ -128,16 +128,18 @@ export class GlobalServices {
 
  public addDemande(demande:demande,username){
 
-  let url = environment._userApiurl + "demande/list/";
+  console.log(username)
+  let url = environment._userApiurl + "stagiaire/byusername";
   let header = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
   let options = new RequestOptions({ headers: header });
 
   return this.http
-    .get(url, options)
+    .post(url, {"username":username},options)
     .map(
       // tslint:disable-next-line: whitespace
       (response: Response) => {
         demande.id_stagiaire=JSON.parse(response['_body'])['_id'];
+        console.log(demande);
         let url1 = environment._userApiurl + "demande/add/";
  
         let header1 = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
