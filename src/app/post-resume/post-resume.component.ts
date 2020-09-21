@@ -32,7 +32,8 @@ export class PostResumeComponent implements OnInit {
         specialite: [''],
         diplome: [''],
         tele:[null],
-        email:['']
+        email:[''],
+        description:['']
     });
     this.entrepriseForm = this.fb.group({
       nom :[''],

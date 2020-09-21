@@ -131,54 +131,57 @@
             <div *ngIf="this.userForm.value['role']==1" class="form-row mb-4" formGroupName="stagiaire">
                                         <p class="h4 mb-4">stagiare info </p><br>
                                         <div class="col">
-                                          <input type="text" formControlName="nom" id="defaultRegisterFormnom" class="form-control" placeholder="nom">
+                                          <input type="text" formControlName="nom" id="defaultRegisterFormnom" class="form-control" placeholder="Entrer votre nom">
                                               </div><br/>
                                          <div class="col">
-                                            <input type="text" formControlName="prenom" id="defaultRegisterFormprenom" class="form-control" placeholder="prenom">
+                                            <input type="text" formControlName="prenom" id="defaultRegisterFormprenom" class="form-control" placeholder="Entrer votre prenom">
                                         </div><br/>
                                         <div class="col">
-                                          <input type="text" formControlName="cin" id="defaultRegisterFormcin" class="form-control" placeholder="cin">
+                                          <input type="text" formControlName="cin" id="defaultRegisterFormcin" class="form-control" placeholder="CIN">
                                       </div><br/>
                                       <div class="col">
-                                      <input type="date" formControlName="dateNaissance" id="defaultRegisterFormdateNaissance" class="form-control" placeholder="dateNaissance">
+                                      <input type="date" formControlName="dateNaissance" id="defaultRegisterFormdateNaissance" class="form-control" placeholder="Entrer votre date de Naissance">
                                     </div><br/>
                                     <div class="col">
-                                     <input type="text" formControlName="specialite" id="defaultRegisterFormspecialite" class="form-control" placeholder="specialite">
+                                     <input type="text" formControlName="specialite" id="defaultRegisterFormspecialite" class="form-control" placeholder="Quelle est votre specialite?">
                                   </div><br/>
                                   <div class="col">
-                                    <input type="text" formControlName="diplome" id="defaultRegisterFormdiplome" class="form-control" placeholder="diplome">
+                                    <input type="text" formControlName="diplome" id="defaultRegisterFormdiplome" class="form-control" placeholder="Quelle Diplome avez vous ?">
                                </div><br/>
                                 <div class="col">
-                                  <input type="text" formControlName="tele" id="defaultRegisterFormtele" class="form-control" placeholder="tele">
+                                  <input type="text" formControlName="tele" id="defaultRegisterFormtele" class="form-control" placeholder="Quelle est votre numero de Telephone ?">
                               </div><br/>
                              
                             <div class="col">
-                              <input type="email" formControlName="email" id="defaultRegisterFormemail" class="form-control" placeholder="email">
+                              <input type="email" formControlName="email" id="defaultRegisterFormemail" class="form-control" placeholder="Votre adresse Mail XXX@XX.XX">
                           </div><br/>
+                          <div class="col">
+                            <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" placeholder="Quelle est votre motivation en quelques lines?" rows="3"></textarea>                        </div><br/>
 
             </div>
             <div *ngIf="this.userForm.value['role']==0" class="form-row mb-4" formGroupName="entreprise">
                                       <p class="h4 mb-4">entreprise info </p><br>
                                       <div class="col">
-                                        <input type="text" formControlName="nom" id="defaultRegisterFormnom" class="form-control" placeholder="nom">
+                                        <input type="text" formControlName="nom" id="defaultRegisterFormnom" class="form-control" placeholder="Quel est le nom de l'entreprise ?">
                                             </div><br/>
                                             <div class="col">
-                                              <input type="text" formControlName="ville" id="defaultRegisterFormville" class="form-control" placeholder="ville">
+                                              <input type="email" formControlName="email" id="defaultRegisterFormemail" class="form-control" placeholder="l'Email de l'entreprise ? " >
+                                          </div><br/>
+                                            <div class="col">
+                                              <input type="text" formControlName="ville" id="defaultRegisterFormville" class="form-control" placeholder="La ville de l'entreprise ?">
                                                  </div><br/>
                                           <div class="col">
-                                          <input type="text" formControlName="specialite" id="defaultRegisterFormspecialite" class="form-control" placeholder="specialite">
+                                          <input type="text" formControlName="specialite" id="defaultRegisterFormspecialite" class="form-control" placeholder="Quelle est sa specialite ?">
                                         </div><br/>
         
                                       <div class="col">
-                                        <input type="number" formControlName="tele" id="defaultRegisterFormtele" class="form-control" placeholder="tele">
+                                        <input type="number" formControlName="tele" id="defaultRegisterFormtele" class="form-control" placeholder="Numero de l'entreprise ?">
                                         </div><br/>
     
-                                  <div class="col">
-                                    <input type="email" formControlName="email" id="defaultRegisterFormemail" class="form-control" placeholder="email">
-                                </div><br/>
+                                 
 
             </div>
-            <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+            <button class="btn btn-info my-4 btn-block" type="submit">Se connecter</button>
           
             <hr>
           
