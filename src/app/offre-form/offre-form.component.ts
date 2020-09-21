@@ -15,7 +15,7 @@ export class OffreFormComponent implements OnInit {
   offreForm : FormGroup;
 
   constructor(private fb:FormBuilder,
-    private loaderService: LoaderService , public toaster : ToastsManager) { }
+    private loaderService: LoaderService , public toaster : ToastsManager,private globalService:GlobalServices) { }
 
   ngOnInit() {
     this.offreForm = this.fb.group ({
@@ -38,9 +38,10 @@ export class OffreFormComponent implements OnInit {
 
 
 
-  onSubmit(){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-
-    console.log(this.offreForm.value)
+  onSubmit(){                
+    console.log('l9zada');
+    console.log(this.offreForm.value)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    this.globalService.addOffre(this.offreForm.value,localStorage.getItem('UserName'));
   }
 
 }

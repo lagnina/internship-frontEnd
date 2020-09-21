@@ -4,7 +4,7 @@ import { FormGroup } from "@angular/forms";
 import { environment } from "../environments/environment";
 import { Http, RequestOptions, Headers, Response } from "@angular/http";
 import { Observable } from "rxjs";
-import { demande } from "./pipes/search";
+import { demande, offre } from "./pipes/search";
 @Injectable()
 export class GlobalServices {
   constructor(private http: Http) {}
@@ -181,25 +181,26 @@ export class GlobalServices {
     .catch(this.handleerror);
  }
 
- public addOffre(demande:demande,username){
+ public addOffre(offre:offre,username){
 
-  let url = environment._userApiurl + "offre/list/";
+  let url = environment._userApiurl + "entreprise/byusername/";
   let header = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
   let options = new RequestOptions({ headers: header });
-
+console.log(offre)
   return this.http
-    .get(url, options)
+    .post(url, {"username":username},options)
     .map(
       // tslint:disable-next-line: whitespace
       (response: Response) => {
-        demande.id_stagiaire=JSON.parse(response['_body'])['_id'];
+        console.log(offre);
+        offre.id_entreprise=JSON.parse(response['_body'])['_id'];
         let url1 = environment._userApiurl + "offre/add/";
  
         let header1 = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
         let options = new RequestOptions({ headers: header1 });
-      
+      console.log(offre);
         return this.http
-          .post(url1, demande,options)
+          .post(url1, offre,options)
           .map(
             // tslint:disable-next-line: whitespace
             (response: Response) => {
