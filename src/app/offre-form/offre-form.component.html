@@ -1,29 +1,39 @@
+<div class="section latest-job-ads" style="vertical-align: middle">
 <form [formGroup]="offreForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
 
                              <p class="h4 mb-4">Ajouter Offre </p><br>
                               <div class="col">
+                                <label>Titre de l'offre</label>
                                 <input type="text" formControlName="nom" id="defaultRegisterFormnom" class="form-control" placeholder="Titre De l'offre">
                                     </div><br/>
                                <div class="col">
+                                 <label>Date de Début</label>
                                   <input type="date" formControlName="dateDebut" id="defaultRegisterFormdateDebut" class="form-control" placeholder="dateDebut">
                               </div><br/>
                               <div class="col">
+                                <label>Date de Fin</label>
+
                                 <input type="date" formControlName="dateFin" id="defaultRegisterFormdateFin" class="form-control" placeholder="dateFin">
                             </div><br/>
                           
                           <div class="col">
+                            <label>Spécialite </label>
+
                            <input type="text" formControlName="specialite" id="defaultRegisterFormspecialite" class="form-control" placeholder="specialite">
                         </div><br/>
                         <div class="col">
+                          <label>Rémuneration</label>
                           <input type="text" formControlName="remuneration" id="defaultRegisterFormremuneration" class="form-control" placeholder="Remunération 0 si négociable">
                         </div>
                       <br/>
                         <div class="col">
+                          <label>Nombre de personne</label>
                           <input type="text" formControlName="nbrPersonne" id="defaultRegisterFormnbrpersonne" class="form-control" placeholder="Enter le nombre des personnes">
                         </div>
                       <br/>
 
                         <div class="col">
+                          <label>Niveau</label>
                           <select class="form-control" formControlName="niveau" id="defaultRegisterFormniveau" class="form-control">
                             <option value="">Niveau</option>
                             <option value="bac">BAC</option>
@@ -35,7 +45,8 @@
                         </div><br/>
                    
                   <div class="col">
-                    <textarea rows="7" formControlName="description" id="defaultRegisterFormdescription" class="form-control" placeholder="description"></textarea>
+                    <label>Description</label>
+                    <textarea rows="7" formControlName="description" id="defaultRegisterFormdescription" class="form-control" placeholder="plus de détail sur votre offre"></textarea>
                 </div><br/>
 
 
@@ -46,3 +57,4 @@
   <hr>
 
 </form>
+</div>
