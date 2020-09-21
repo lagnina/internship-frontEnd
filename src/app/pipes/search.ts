@@ -21,3 +21,16 @@ export class demande {
 
 
 }
+
+export class offre {
+    id_entreprise : String;
+    nom : String;
+    dateDebut : Date;
+    dateFin : Date;
+    specialite : String;
+    description : String;
+    nbrPersonne :Number;
+    remuneration : String;
+    niveau :String;
+    diplome :String;
+}

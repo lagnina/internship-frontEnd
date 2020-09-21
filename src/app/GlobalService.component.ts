@@ -129,7 +129,6 @@ export class GlobalServices {
  public addDemande(demande:demande,username){
 
   let url = environment._userApiurl + "demande/list/";
- 
   let header = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
   let options = new RequestOptions({ headers: header });
 
@@ -140,6 +139,59 @@ export class GlobalServices {
       (response: Response) => {
         demande.id_stagiaire=JSON.parse(response['_body'])['_id'];
         let url1 = environment._userApiurl + "demande/add/";
+ 
+        let header1 = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
+        let options = new RequestOptions({ headers: header1 });
+      
+        return this.http
+          .post(url1, demande,options)
+          .map(
+            // tslint:disable-next-line: whitespace
+            (response: Response) => {
+              console.log(response);
+              return response;
+            }
+          )
+          .catch(this.handleerror).subscribe();
+      }
+    )
+    .catch(this.handleerror).subscribe();
+
+ }
+
+ public offreList(){
+
+  let url = environment._userApiurl + "offre/list/";
+ 
+  let header = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
+  let options = new RequestOptions({ headers: header });
+
+  return this.http
+    .get(url, options)
+    .map(
+      // tslint:disable-next-line: whitespace
+      (response: Response) => {
+        console.log(response);
+
+        return response;
+      }
+    )
+    .catch(this.handleerror);
+ }
+
+ public addOffre(demande:demande,username){
+
+  let url = environment._userApiurl + "offre/list/";
+  let header = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
+  let options = new RequestOptions({ headers: header });
+
+  return this.http
+    .get(url, options)
+    .map(
+      // tslint:disable-next-line: whitespace
+      (response: Response) => {
+        demande.id_stagiaire=JSON.parse(response['_body'])['_id'];
+        let url1 = environment._userApiurl + "offre/add/";
  
         let header1 = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
         let options = new RequestOptions({ headers: header1 });

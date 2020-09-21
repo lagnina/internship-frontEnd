@@ -1,30 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalServices } from '../GlobalService.component';
-import { demande } from '../pipes/search';
+import { offre } from '../pipes/search';
 
 @Component({
-  selector: 'app-demande-list',
-  templateUrl: './demande-list.component.html',
-  styleUrls: ['./demande-list.component.css']
+  selector: 'app-offre-list',
+  templateUrl: './offre-list.component.html',
+  styleUrls: ['./offre-list.component.css']
 })
-export class DemandeListComponent implements OnInit {
-  
- demandes : demande[];
+export class OffreListComponent implements OnInit {
+  offres : offre[];
 
   constructor(private globalService:GlobalServices) { }
 
   ngOnInit() {
-    this.globalService.demandeList().subscribe((resp) => {     
+    this.globalService.offreList().subscribe((resp) => {     
       
-      this.demandes = JSON.parse(resp['_body']);
-      this.demandes.forEach(demande => {
-        demande['diff']= this.daydiff(demande.dateDebut,demande.dateFin);
+      this.offres = JSON.parse(resp['_body']);
+      this.offres.forEach(offre => {
+        offre['diff']= this.daydiff(offre.dateDebut,offre.dateFin);
       });
-      console.log(this.demandes);
+      console.log(this.offres);
     },
     error=>{    
     });
   }
+
   daydiff(date1,date2){
     var date11 = new Date(date1);
     var date22 = new Date(date2);
@@ -35,5 +35,4 @@ export class DemandeListComponent implements OnInit {
     // afficher la différence
     return days_Diff;
   }
-
 }

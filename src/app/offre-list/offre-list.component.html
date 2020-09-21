@@ -17,7 +17,7 @@
 
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in" id="hot-jobs">
-      <div *ngFor="let demande of this.demandes; let i = index" class="job-ad-item">
+      <div *ngFor="let offre of this.offres; let i = index" class="job-ad-item">
         <div class="item-info">
           <div class="item-image-box">
             <div class="item-image">
@@ -34,7 +34,7 @@
           <div class="ad-info">
             <span>
               
-              <a href="job-details.html" class="title">{{demande.specialite}}</a> 
+              <a href="job-details.html" class="title">{{offre.specialite}}</a> 
               <a routerLink="/home">
               </a></span>
 
@@ -45,28 +45,28 @@
                     ><i class="fa fa-map-marker"
                       aria-hidden="true"
                     ></i
-                    >Nombre de personne {{demande.nbrPersonne}}
+                    >Nombre de personne {{offre.nbrPersonne}}
                   </a>
                 </li>
                 <li>
                     <a routerLink="/home"
-                      ><i class="fa fa-clock-o" aria-hidden="true">{{demande['diff']}} jours</i></a>
+                      ><i class="fa fa-clock-o" aria-hidden="true">{{offre['diff']}} jours</i></a>
                 </li>
                 <li>
                   <a routerLink="/home"
                     ><i class="fa fa-money" aria-hidden="true"></i
-                    >{{demande.remuneration}} $</a
+                    >{{offre.remuneration}} $</a
                   >
                 </li>
                 <li>
                   <a routerLink="/home"
-                    ><i class="fa fa-tags" aria-hidden="true"></i>{{demande.specialite}}</a>
+                    ><i class="fa fa-tags" aria-hidden="true"></i>{{offre.specialite}}</a>
                 </li>
                 <br/>
                 <br/>
                 <li>
                   <a routerLink="/home"
-                    >Description :{{demande.description}}</a>
+                    >Description :{{offre.description}}</a>
                 </li>
               </ul>
             </div>

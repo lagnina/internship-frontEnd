@@ -10,7 +10,7 @@ import {SigninComponent} from './signin/signin.component';
 import {SearchComponent} from './search/search.component';
 import { AuthGuardGuard } from './auth-guard.service';
 import { OffreFormComponent } from './offre-form/offre-form.component';
-import { OfferListComponent } from './offer-list/offer-list.component';
+import { OffreListComponent } from './offre-list/offre-list.component';
 import { DemandeListComponent } from './demande-list/demande-list.component';
 import { DemandeFormComponent } from './demande-form/demande-form.component';
 
@@ -25,7 +25,7 @@ const routes: Routes =[
   ]},
   { path:'offer',component: offerComponent,canActivate:[AuthGuardGuard],children:[
     {path: '', redirectTo: 'list', pathMatch: 'full'}, 
-      {path: 'list', component: OfferListComponent}, 
+      {path: 'list', component: OffreListComponent}, 
       {path: 'form', component: OffreFormComponent}, 
   ]},
   {path:'signin',component: SigninComponent},
