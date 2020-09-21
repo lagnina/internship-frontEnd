@@ -35,4 +35,8 @@ export class OffreListComponent implements OnInit {
     // afficher la différence
     return days_Diff;
   }
+  onApply(offre){
+    
+    this.globalService.apply(offre);
+  }
 }
