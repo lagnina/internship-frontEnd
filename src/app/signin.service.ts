@@ -34,7 +34,7 @@ Signup(userData,stagiareData?,entrepriseData?) {
   let username: String;
   let role;
   
-      this
+     return  this
       .http
       .post(url,JSON.stringify(userData),options)
       .map(
@@ -44,7 +44,7 @@ Signup(userData,stagiareData?,entrepriseData?) {
           console.log(role);
           console.log(response)
           if(role == "1"){
-            console.log('tgsjsjjjkkkfdhs');
+           
             const url1=environment._userApiurl+'stagiaire/add/';
             stagiareData['username']=username;
             stagiareData['tele']=parseInt(stagiareData['tele']);
@@ -72,7 +72,7 @@ Signup(userData,stagiareData?,entrepriseData?) {
     
           }
         })
-      .catch(this.handleerror).subscribe()
+      .catch(this.handleerror)
 
      
       

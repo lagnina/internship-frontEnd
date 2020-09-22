@@ -34,19 +34,17 @@
           <div class="ad-info">
             <span>
               
-              <a href="job-details.html" class="title">{{offre.specialite}}</a> 
+              <a href="job-details.html" class="title">{{offre.nom}}</a> 
               <a routerLink="/home">
               </a></span>
 
             <div class="ad-meta">
               <ul>
                 <li>
-                  <a routerLink="/home"
-                    ><i class="fa fa-map-marker"
-                      aria-hidden="true"
-                    ></i
-                    >Nombre de personne {{offre.nbrPersonne}}
-                  </a>
+                  <a routerLink="/home">
+                    <i class="fa fa-map-marker"aria-hidden="true"></i
+                    > 
+                  </a>{{offre.ville}}
                 </li>
                 <li>
                     <a routerLink="/home"
@@ -55,13 +53,16 @@
                 <li>
                   <a routerLink="/home"
                     ><i class="fa fa-money" aria-hidden="true"></i
-                    >{{offre.remuneration}} $</a
+                    > {{offre.remuneration}}DH</a
                   >
                 </li>
                 <li>
                   <a routerLink="/home"
-                    ><i class="fa fa-tags" aria-hidden="true"></i>{{offre.specialite}}</a>
+                    ><i class="fa fa-user-o" aria-hidden="true"></i
+                    > {{offre.nbrPersonne}}personne(s)</a
+                  >
                 </li>
+                
                 <br/>
                 <br/>
                 <li>
@@ -74,8 +75,8 @@
           </div>
           <!-- ad-info -->
           <div class="button">
-            <a routerLink="/home" class="btn btn-primary"
-              >Apply Now</a
+            <button (click)="onApply(offre)" class="btn btn-primary"
+              > Now</button
             >
           </div>
         </div>

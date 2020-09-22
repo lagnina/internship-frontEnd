@@ -215,4 +215,26 @@ console.log(offre)
 
  }
 
+
+ public apply(offre){
+
+  let url = environment._userApiurl + "offre/apply/";
+  let header = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
+  let options = new RequestOptions({ headers: header });
+console.log(offre)
+  return this.http
+    .post(url, {"offre":offre,"username":localStorage.getItem('UserName')},options)
+    .map(
+      // tslint:disable-next-line: whitespace
+      (response: Response) => {
+        console.log(response);
+
+        return response;
+      }
+    )
+    .catch(this.handleerror).subscribe();
+
+
+ }
+
 }

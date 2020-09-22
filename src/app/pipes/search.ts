@@ -10,12 +10,13 @@ export class job {
 export class demande {
     id_stagiaire :String;
     nom : String;
+    ville :String;
     dateDebut : Date;
     dateFin : Date;
     specialite : String;
     description : String;
     nbrPersonne :Number;
-    remuneration : String;
+    remuneration : Number;
     niveau :String;
     diplome :String;
 
@@ -25,12 +26,13 @@ export class demande {
 export class offre {
     id_entreprise : String;
     nom : String;
+    ville : String;
     dateDebut : Date;
     dateFin : Date;
     specialite : String;
     description : String;
     nbrPersonne :Number;
-    remuneration : String;
+    remuneration : Number;
     niveau :String;
     diplome :String;
 }
