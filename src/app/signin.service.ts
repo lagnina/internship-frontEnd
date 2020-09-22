@@ -34,7 +34,7 @@ Signup(userData,stagiareData?,entrepriseData?) {
   let username: String;
   let role;
   
-      this
+     return  this
       .http
       .post(url,JSON.stringify(userData),options)
       .map(
@@ -72,7 +72,7 @@ Signup(userData,stagiareData?,entrepriseData?) {
     
           }
         })
-      .catch(this.handleerror).subscribe()
+      .catch(this.handleerror)
 
      
       

@@ -7,6 +7,7 @@ import {GlobalServices} from '../GlobalService.component';
 import { SigninService } from '../signin.service';
 
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-resume',
@@ -19,7 +20,7 @@ export class PostResumeComponent implements OnInit {
   entrepriseForm: FormGroup;
   
   constructor(private fb:FormBuilder,private service:PostresumeService, 
-    private loaderService: LoaderService,public toastr: ToastsManager,private sig:SigninService 
+    private loaderService: LoaderService,public toastr: ToastsManager,private sig:SigninService,private router: Router 
   ) {}
 
   ngOnInit() {
@@ -60,7 +61,10 @@ export class PostResumeComponent implements OnInit {
       'username':this.userForm.value['username'],
       'password':this.userForm.value['password'],
       'role':this.userForm.value['role']
-      },this.userForm.value['stagiaire'],this.userForm.value['entreprise'])
+      },this.userForm.value['stagiaire'],this.userForm.value['entreprise']).subscribe(()=>{
+        this.router.navigate(['/signin']);
+      });
+      
 
   }
   
