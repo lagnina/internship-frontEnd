@@ -7,7 +7,7 @@
           <div class="col-md-8 clearfix">
               <form  [formGroup]="SignInForm" (ngSubmit)="signIn()" novalidate>
                   <router-outlet>
-                      <span *ngIf="showLoader" class="loading">Loading...</span>
+                      <span *ngIf="showLoader" class="loading">En cours de chargement...</span>
                   </router-outlet>
                   <section class="user-page">
                       <div class="container">
