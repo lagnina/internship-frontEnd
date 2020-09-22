@@ -21,6 +21,7 @@ export class OffreFormComponent implements OnInit {
     this.offreForm = this.fb.group ({
 
       nom : [''],
+      ville :[''],
       dateDebut :[''],
       dateFin :[''],
       specialite :[''],
@@ -38,9 +39,7 @@ export class OffreFormComponent implements OnInit {
 
 
 
-  onSubmit(){                
-    console.log('l9zada');
-    console.log(this.offreForm.value)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+  onSubmit(){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
     this.globalService.addOffre(this.offreForm.value,localStorage.getItem('UserName'));
   }
 

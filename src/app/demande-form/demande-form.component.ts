@@ -18,6 +18,7 @@ demandeForm : FormGroup;
     this.demandeForm = this.fb.group ({
 
       nom : [''],
+      ville  : [''],
       dateDebut :[''],
       dateFin :[''],
       specialite :[''],
