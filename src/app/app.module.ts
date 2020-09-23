@@ -33,10 +33,14 @@ import { OffreFormComponent } from './offre-form/offre-form.component';
 import { OffreListComponent } from './offre-list/offre-list.component';
 import { DemandeFormComponent } from './demande-form/demande-form.component';
 import { DemandeListComponent } from './demande-list/demande-list.component';
+import { OffreUpdateComponent } from './offre-update/offre-update.component';
+import { OffreDeleteComponent } from './offre-delete/offre-delete.component';
+import { DemandeUpdateComponent } from './demande-update/demande-update.component';
+import { DemandeDeleteComponent } from './demande-delete/demande-delete.component';
 
 
 @NgModule({
-  declarations: [				
+  declarations: [								
     AppComponent,    
     HeaderComponent,
     FooterComponent,
@@ -48,7 +52,11 @@ import { DemandeListComponent } from './demande-list/demande-list.component';
       OffreFormComponent,
       OffreListComponent,
       DemandeFormComponent,
-      DemandeListComponent
+      DemandeListComponent,
+      OffreUpdateComponent,
+      OffreDeleteComponent,
+      DemandeUpdateComponent,
+      DemandeDeleteComponent
    ],
   imports: [
     BrowserModule,

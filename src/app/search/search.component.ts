@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import {job} from '../pipes/search';
+import {job, offre} from '../pipes/search';
 import {FormBuilder,FormGroup,FormArray,FormControl} from '@angular/forms';
 import {JobListService} from '../job-list.service';
 import { Headers, Response } from '@angular/http';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { GlobalServices } from '../GlobalService.component';
 
 @Component({
   selector: 'app-search',
@@ -36,30 +37,40 @@ export class SearchComponent implements OnInit {
   unselectedtypes:any;
   unselectedCompany:any;
   unselectedLocation:any;
+  offres : offre[];
 
-  constructor(private fb:FormBuilder,private jobservice:JobListService,public toastr: ToastsManager, vcr: ViewContainerRef) { 
+  constructor(private fb:FormBuilder,private jobservice:JobListService,public toastr: ToastsManager,private globalService:GlobalServices, vcr: ViewContainerRef) { 
     this.pageData=new Array<any>();
     this.toastr.setRootViewContainerRef(vcr); 
     
   }
 
   ngOnInit() {
-    this.loadPageData();
-   this.loadListData();
-   this.datePosted = [{day: 'Today'}, {day: '7 days'}, {day: '30 days'}];   
-    this.jobList = this.fb.group({     
-      jobDays: this.fb.array([]),
-      jobType: this.fb.array([]),
-      experience: this.fb.array([]),
-      company: this.fb.array([]),
-      location: this.fb.array([])     
-    });
-    this.searchForm=this.fb.group({
-      designation: '',
-      locationC:'',
-      key:''
+    this.globalService.offreList().subscribe((resp) => {     
+      
+      this.offres = JSON.parse(resp['_body']);
+      this.offres.forEach(offre => {
+        offre['diff']= this.daydiff(offre.dateDebut,offre.dateFin);
+      });
+      console.log(this.offres);
+    },
+    error=>{    
     });
     // this.toastr.success('Correct UserName and Password!', 'SignIn Successfull',{toastLife: 2000});
+  }
+  daydiff(date1,date2){
+    var date11 = new Date(date1);
+    var date22 = new Date(date2);
+     // différence des heures
+    var time_diff = date22.getTime() - date11.getTime();
+     // différence de jours
+    var days_Diff = time_diff / (1000 * 3600 * 24);
+    // afficher la différence
+    return days_Diff;
+  }
+  onApply(offre){
+    
+    this.globalService.apply(offre);
   }
   loadPageData() {
     this.jobservice.getValues().subscribe((resp: Response) => {      

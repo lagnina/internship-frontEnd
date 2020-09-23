@@ -37,7 +37,7 @@
         <ul class="sign-in" style="cursor: pointer">
           <li><i class="fa fa-user"></i></li>
           <li *ngIf="global.getUserName() == null;"><a routerLink="/signin">Se connecter</a></li>
-          <li *ngIf="global.getUserName() != null;"><a (click)="signOut()">S'inscrire/Crée CV</a></li>
+          <li *ngIf="global.getUserName() != null;"><a (click)="signOut()">Se déconnecter</a></li>
           <!-- <li><a routerLink="/home">Register</a></li> -->
         </ul><!-- sign-in -->					
 

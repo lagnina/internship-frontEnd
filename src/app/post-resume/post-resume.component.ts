@@ -27,6 +27,7 @@ export class PostResumeComponent implements OnInit {
     this.stagiaireForm = this.fb.group({
       nom : [''],
       prenom : [''],
+      sexe :[''],
         cin:[''],
         dateNaissance : [''],
         lieuNaissance: [''],

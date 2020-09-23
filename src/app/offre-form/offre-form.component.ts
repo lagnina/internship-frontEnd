@@ -5,6 +5,8 @@ import {LoaderService} from '../loader.service';
 import { ToastsManager } from 'ng2-toastr';
 import {GlobalServices} from '../GlobalService.component';
 import { SigninService } from '../signin.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-offre-form',
@@ -15,7 +17,7 @@ export class OffreFormComponent implements OnInit {
   offreForm : FormGroup;
 
   constructor(private fb:FormBuilder,
-    private loaderService: LoaderService , public toaster : ToastsManager,private globalService:GlobalServices) { }
+    private loaderService: LoaderService , public toaster : ToastsManager,private globalService:GlobalServices,private router: Router) { }
 
   ngOnInit() {
     this.offreForm = this.fb.group ({
@@ -41,6 +43,8 @@ export class OffreFormComponent implements OnInit {
 
   onSubmit(){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
     this.globalService.addOffre(this.offreForm.value,localStorage.getItem('UserName'));
+    
+      this.router.navigate(['/offer/list']);
   }
 
 }
