@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GlobalServices } from '../GlobalService.component';
 import { offre } from '../pipes/search';
 
@@ -9,8 +10,9 @@ import { offre } from '../pipes/search';
 })
 export class OffreListComponent implements OnInit {
   offres : offre[];
+  Mesoffres: offre[];
 
-  constructor(private globalService:GlobalServices) { }
+  constructor(private globalService:GlobalServices,private router:Router) { }
 
   ngOnInit() {
     this.globalService.offreList().subscribe((resp) => {     
@@ -19,11 +21,15 @@ export class OffreListComponent implements OnInit {
       this.offres.forEach(offre => {
         offre['diff']= this.daydiff(offre.dateDebut,offre.dateFin);
       });
-      console.log(this.offres);
     },
     error=>{    
     });
+    this.globalService.mesOffreList(localStorage.getItem('UserName')).subscribe((resp)=>{
+      this.Mesoffres = resp;
+    });
   }
+  
+
 
   daydiff(date1,date2){
     var date11 = new Date(date1);
@@ -38,5 +44,11 @@ export class OffreListComponent implements OnInit {
   onApply(offre){
     
     this.globalService.apply(offre);
+  }
+  onDelete(offre){
+    this.globalService.deleteOffre(offre).subscribe((resp)=>{
+      this.ngOnInit();
+    });
+
   }
 }

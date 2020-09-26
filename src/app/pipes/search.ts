@@ -24,6 +24,7 @@ export class demande {
 }
 
 export class offre {
+    _id:String
     id_entreprise : String;
     nom : String;
     ville : String;

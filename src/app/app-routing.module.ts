@@ -29,7 +29,7 @@ const routes: Routes =[
     {path: '', redirectTo: 'list', pathMatch: 'full'}, 
       {path: 'list', component: OffreListComponent}, 
       {path: 'form', component: OffreFormComponent}, 
-      {path: 'update', component: OffreFormComponent}, 
+      {path: 'update/:id', component: OffreFormComponent}, 
       {path: 'delete', component: OffreFormComponent}, 
   ]},
   {path:'signin',component: SigninComponent},

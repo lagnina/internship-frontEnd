@@ -28,11 +28,13 @@
 						<div class="row">
 							<div class="col-md-6">
 								<li>
-									<h4>PERMANENT STAFFING :</h4>
-									<p>We customise our search based on the Job specification, key-deliverables of the position and source TOP talents.
-										We source candidates from a data-base of mixed talents, and through networking. Our success ratio has been high
-										due to the clear understanding of the organisation needs. We also have association with various educational institutions
-										for providing Freshers through Campus or Off-campus recruitments.</p>
+									<form  [formGroup]="cvForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" >
+										<input formControlName="file" type="file" name="cv" >
+										<input type="submit" name="submit" value="Upload (Resumes automatically)">
+										<button type="submit">send</button>
+									  </form>
+									  
+									  
 								</li>
 							</div>
 							<div class="col-md-6">
