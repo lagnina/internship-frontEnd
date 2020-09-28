@@ -8,7 +8,7 @@ import {PostResumeComponent} from './post-resume/post-resume.component';
 import {ServicesComponent}  from './services/services.component';
 import {SigninComponent} from './signin/signin.component';
 import {SearchComponent} from './search/search.component';
-import { AuthGuardGuard } from './auth-guard.service';
+import { AuthGuardGuard } from './_services/auth-guard.service';
 import { OffreFormComponent } from './offre-form/offre-form.component';
 import { OffreListComponent } from './offre-list/offre-list.component';
 import { DemandeListComponent } from './demande-list/demande-list.component';

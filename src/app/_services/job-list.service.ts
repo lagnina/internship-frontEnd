@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { URLSearchParams } from '@angular/http';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {environment} from '../environments/environment';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class JobListService { 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-import {environment} from '../environments/environment';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class PostresumeService { 

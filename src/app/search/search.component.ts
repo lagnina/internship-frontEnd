@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import {job, offre} from '../pipes/search';
 import {FormBuilder,FormGroup,FormArray,FormControl} from '@angular/forms';
-import {JobListService} from '../job-list.service';
+import {JobListService} from '../_services/job-list.service';
 import { Headers, Response } from '@angular/http';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-import { GlobalServices } from '../GlobalService.component';
+import { GlobalServices } from '../_services/GlobalService.component';
+import { OfferService } from '../_services/offer.service';
 
 @Component({
   selector: 'app-search',
@@ -39,14 +40,14 @@ export class SearchComponent implements OnInit {
   unselectedLocation:any;
   offres : offre[];
 
-  constructor(private fb:FormBuilder,private jobservice:JobListService,public toastr: ToastsManager,private globalService:GlobalServices, vcr: ViewContainerRef) { 
+  constructor(private fb:FormBuilder,private jobservice:JobListService,public toastr: ToastsManager,private globalService:GlobalServices, vcr: ViewContainerRef,private offerService:OfferService) { 
     this.pageData=new Array<any>();
     this.toastr.setRootViewContainerRef(vcr); 
     
   }
 
   ngOnInit() {
-    this.globalService.offreList().subscribe((resp) => {     
+    this.offerService.offreList().subscribe((resp) => {     
       
       this.offres = JSON.parse(resp['_body']);
       this.offres.forEach(offre => {
@@ -70,7 +71,7 @@ export class SearchComponent implements OnInit {
   }
   onApply(offre){
     
-    this.globalService.apply(offre);
+    this.offerService.apply(offre);
   }
   loadPageData() {
     this.jobservice.getValues().subscribe((resp: Response) => {      

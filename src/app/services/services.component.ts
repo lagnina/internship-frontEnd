@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { GlobalServices } from '../GlobalService.component';
+import { GlobalServices } from '../_services/GlobalService.component';
 
 @Component({
   selector: 'app-services',

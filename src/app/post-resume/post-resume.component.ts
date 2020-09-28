@@ -1,10 +1,10 @@
 import { Component, OnInit ,ViewChild, ViewContainerRef} from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import {PostresumeService} from '../postresume.service';
-import {LoaderService} from '../loader.service';
+import {PostresumeService} from '../_services/postresume.service';
+import {LoaderService} from '../_services/loader.service';
 import { ToastsManager } from 'ng2-toastr';
-import {GlobalServices} from '../GlobalService.component';
-import { SigninService } from '../signin.service';
+import {GlobalServices} from '../_services/GlobalService.component';
+import { SigninService } from '../_services/signin.service';
 
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { Router } from '@angular/router';

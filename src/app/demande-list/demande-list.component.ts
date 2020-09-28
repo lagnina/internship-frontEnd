@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalServices } from '../GlobalService.component';
+import { GlobalServices } from '../_services/GlobalService.component';
 import { demande } from '../pipes/search';
+import { DemandeService } from '../_services/demande.service';
 
 @Component({
   selector: 'app-demande-list',
@@ -11,10 +12,10 @@ export class DemandeListComponent implements OnInit {
   
  demandes : demande[];
 
-  constructor(private globalService:GlobalServices) { }
+  constructor(private globalService:GlobalServices,private demandeService:DemandeService) { }
 
   ngOnInit() {
-    this.globalService.demandeList().subscribe((resp) => {     
+    this.demandeService.demandeList().subscribe((resp) => {     
       
       this.demandes = JSON.parse(resp['_body']);
       this.demandes.forEach(demande => {

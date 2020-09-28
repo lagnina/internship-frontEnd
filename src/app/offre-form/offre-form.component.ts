@@ -1,11 +1,12 @@
 import { Component, OnInit ,ViewChild, ViewContainerRef} from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import {PostresumeService} from '../postresume.service';
-import {LoaderService} from '../loader.service';
+import {PostresumeService} from '../_services/postresume.service';
+import {LoaderService} from '../_services/loader.service';
 import { ToastsManager } from 'ng2-toastr';
-import {GlobalServices} from '../GlobalService.component';
-import { SigninService } from '../signin.service';
+import {GlobalServices} from '../_services/GlobalService.component';
+import { SigninService } from '../_services/signin.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OfferService } from '../_services/offer.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class OffreFormComponent implements OnInit {
   offreForm : FormGroup;
 
   constructor(private fb:FormBuilder,
-    private loaderService: LoaderService , public toaster : ToastsManager,private globalService:GlobalServices,private router: Router,private activatedRoute: ActivatedRoute) { }
+    private loaderService: LoaderService , public toaster : ToastsManager,private globalService:GlobalServices,private router: Router,private activatedRoute: ActivatedRoute,private offerService:OfferService) { }
 
   ngOnInit() {
     
@@ -38,7 +39,7 @@ export class OffreFormComponent implements OnInit {
     });
 
     if(this.router.url.includes('update')){
-      this.globalService.GetOfferById(this.activatedRoute.snapshot.params['id']).subscribe((res)=>
+      this.offerService.GetOfferById(this.activatedRoute.snapshot.params['id']).subscribe((res)=>
       this.offreForm.patchValue({
 
         nom : res.nom,
@@ -64,7 +65,7 @@ export class OffreFormComponent implements OnInit {
   onSubmit(){              
     if(this.router.url.includes('update')){   
 
-      this.globalService.updateOffer(this.offreForm.value,this.activatedRoute.snapshot.params['id']).subscribe((resp)=>
+      this.offerService.updateOffer(this.offreForm.value,this.activatedRoute.snapshot.params['id']).subscribe((resp)=>
       {
         console.log('sucess')
         console.log(resp)
@@ -74,7 +75,7 @@ export class OffreFormComponent implements OnInit {
     else if (this.router.url.includes('delete')){
 
     }else{
-      this.globalService.addOffre(this.offreForm.value,localStorage.getItem('UserName'));
+      this.offerService.addOffre(this.offreForm.value,localStorage.getItem('UserName'));
     }
       this.router.navigate(['/offer/list']);
   }

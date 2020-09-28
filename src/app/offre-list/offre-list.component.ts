@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalServices } from '../GlobalService.component';
+import { GlobalServices } from '../_services/GlobalService.component';
 import { offre } from '../pipes/search';
+import { OfferService } from '../_services/offer.service';
 
 @Component({
   selector: 'app-offre-list',
@@ -12,10 +13,10 @@ export class OffreListComponent implements OnInit {
   offres : offre[];
   Mesoffres: offre[];
 
-  constructor(private globalService:GlobalServices,private router:Router) { }
+  constructor(private globalService:GlobalServices,private router:Router,private offerService:OfferService) { }
 
   ngOnInit() {
-    this.globalService.offreList().subscribe((resp) => {     
+    this.offerService.offreList().subscribe((resp) => {     
       
       this.offres = JSON.parse(resp['_body']);
       this.offres.forEach(offre => {
@@ -24,7 +25,7 @@ export class OffreListComponent implements OnInit {
     },
     error=>{    
     });
-    this.globalService.mesOffreList(localStorage.getItem('UserName')).subscribe((resp)=>{
+    this.offerService.mesOffreList(localStorage.getItem('UserName')).subscribe((resp)=>{
       this.Mesoffres = resp;
     });
   }
@@ -43,10 +44,10 @@ export class OffreListComponent implements OnInit {
   }
   onApply(offre){
     
-    this.globalService.apply(offre);
+    this.offerService.apply(offre);
   }
   onDelete(offre){
-    this.globalService.deleteOffre(offre).subscribe((resp)=>{
+    this.offerService.deleteOffre(offre).subscribe((resp)=>{
       this.ngOnInit();
     });
 

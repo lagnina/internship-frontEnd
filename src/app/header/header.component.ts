@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {GlobalServices} from '../GlobalService.component';
+import {GlobalServices} from '../_services/GlobalService.component';
 import { Router } from '@angular/router';
-import { SigninService } from '../signin.service';
+import { SigninService } from '../_services/signin.service';
 
 @Component({
   selector: 'app-header',
