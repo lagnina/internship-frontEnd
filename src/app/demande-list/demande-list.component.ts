@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GlobalServices } from '../_services/GlobalService.component';
 import { demande } from '../pipes/search';
 import { DemandeService } from '../_services/demande.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-demande-list',
@@ -11,8 +12,9 @@ import { DemandeService } from '../_services/demande.service';
 export class DemandeListComponent implements OnInit {
   
  demandes : demande[];
+ Mesdemandes: demande[];
 
-  constructor(private globalService:GlobalServices,private demandeService:DemandeService) { }
+  constructor(private globalService:GlobalServices,private demandeService:DemandeService,private rourter:Router) { }
 
   ngOnInit() {
     this.demandeService.demandeList().subscribe((resp) => {     
@@ -25,6 +27,9 @@ export class DemandeListComponent implements OnInit {
     },
     error=>{    
     });
+    this.demandeService.mesDemandeList(localStorage.getItem('UserName')).subscribe((resp)=>{
+      this.Mesdemandes = resp;
+    });
   }
   daydiff(date1,date2){
     var date11 = new Date(date1);
@@ -35,6 +40,13 @@ export class DemandeListComponent implements OnInit {
     var days_Diff = time_diff / (1000 * 3600 * 24);
     // afficher la différence
     return days_Diff;
+  }
+
+  onDelete(demande){
+    this.demandeService.deleteDemande(demande).subscribe((resp)=>{
+      this.ngOnInit();
+    });
+
   }
 
 }

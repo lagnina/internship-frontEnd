@@ -8,6 +8,7 @@ export class job {
 
 
 export class demande {
+    _id:String
     id_stagiaire :String;
     nom : String;
     ville :String;
