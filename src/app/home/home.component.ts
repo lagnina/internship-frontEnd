@@ -13,10 +13,9 @@ export class HomeComponent implements OnInit {
   constructor(private global:GlobalServices) { }
 
   ngOnInit() {
-    console.log('aaaa')
+
     this.global.getStagiaireCount().subscribe((resp) => {     
-      console.log('aabbbbbbbbba')
-      console.log(resp)
+    
       this.countstagiare = JSON.parse(resp['_body'])['count'];
     },
 error=>{    
