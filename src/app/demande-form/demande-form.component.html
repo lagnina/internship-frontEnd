@@ -54,7 +54,13 @@
   
   
   
-  <button class="btn btn-info my-4 btn-block" type="submit">Ajouter</button>
+  <button [ngSwitch]="true" class="btn btn-info my-4 btn-block" type="submit">
+    <p *ngSwitchCase="this.router.url.includes('update')">update</p>
+    <p *ngSwitchCase="this.router.url.includes('delete')">delete</p>
+    <p *ngSwitchDefault>Ajouter</p>
+    
+  
+  </button>
   
   <hr>
   

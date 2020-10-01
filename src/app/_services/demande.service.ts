@@ -31,8 +31,51 @@ public demandeList(){
       )
       .catch(this.handleerror);
    }
+
+public mesDemandeList(username){
   
-   public addDemande(demande:demande,username){
+    let url = environment._userApiurl + "stagiaire/byusername/";
+    let header = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
+    let options = new RequestOptions({ headers: header });
+    let mesOffres;
+    return this.http
+      .post(url, {"username":username},options)
+      .map(
+        // tslint:disable-next-line: whitespace
+        (response: Response) => {
+          let id_stagiaire=JSON.parse(response['_body'])['_id'];
+          localStorage.setItem('id_stagiaire',id_stagiaire);
+          return id_stagiaire
+            
+        }
+      ).pipe(
+        switchMap(output => 
+          {
+          
+    let url1 = environment._userApiurl + "demande/byStagiaire/";
+    let header1 = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
+    let options1 = new RequestOptions({ headers: header1 });
+        return  this.http
+        .post(url1, {"id_stagiaire":output},options1)
+        .map(
+          // tslint:disable-next-line: whitespace
+          (response: Response) => {
+            mesOffres = JSON.parse(response['_body']);
+            mesOffres.forEach(offre => {
+              offre['diff']= this.daydiff(offre.dateDebut,offre.dateFin);
+            });
+            return mesOffres;
+            
+          }
+        )
+        
+  
+        }
+      )
+      )
+      
+   }
+public addDemande(demande:demande,username){
   
     console.log(username)
     let url = environment._userApiurl + "stagiaire/byusername";
@@ -66,8 +109,7 @@ public demandeList(){
   
    }
   
-   
-   public daydiff(date1,date2){
+public daydiff(date1,date2){
     var date11 = new Date(date1);
     var date22 = new Date(date2);
      // différence des heures
@@ -81,5 +123,62 @@ public demandeList(){
   handleerror(error: Response) {
     return Observable.throw(error.statusText);
   }
-   
+
+public  deleteDemande(demande: any) {
+    let url = environment._userApiurl + "demande/delete/";
+    let header = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
+    let options = new RequestOptions({ headers: header });
+    return this.http
+      .post(url, {"id":demande._id},options)
+      .map(
+        // tslint:disable-next-line: whitespace
+        (response: Response) => {
+          
+          console.log(response)
+          return response;
+        }
+      )
+      .catch(this.handleerror);
+  }
+public updateDemande(value: any, id: any) {
+    let url = environment._userApiurl + "demande/update/"+id;
+    let header = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
+    let options = new RequestOptions({ headers: header });
+    value['id']= id;
+    value['id_stagiaire']= localStorage.getItem('id_stagiaire');
+    console.log(value);
+    return this.http
+    .put(url,value,options)
+    .map(
+      // tslint:disable-next-line: whitespace
+      (response: Response) => {
+        console.log(response);
+  
+        return JSON.parse(response['_body']);
+      }
+    )
+    .catch(this.handleerror);
+  
+  }   
+
+public GetDemandeById(id){
+     
+    let url = environment._userApiurl + "demande/byid/"+id;
+    let header = new Headers({ "Content-Type": "application/json","Authorization":"Bearer "+localStorage.getItem('token') });
+    
+    let options = new RequestOptions({ headers: header});
+    
+    return this.http
+    .get(url,options)
+    .map(
+      // tslint:disable-next-line: whitespace
+      (response: Response) => {
+        console.log(response);
+  
+        return JSON.parse(response['_body']);
+      }
+    )
+    .catch(this.handleerror);
+  
+   }
 }

@@ -22,7 +22,7 @@ const routes: Routes =[
     {path: '', redirectTo: 'list', pathMatch: 'full'}, 
       {path: 'list', component: DemandeListComponent}, 
       {path: 'form', component: DemandeFormComponent}, 
-      {path: 'update', component: DemandeFormComponent}, 
+      {path: 'update/:id', component: DemandeFormComponent}, 
       {path: 'delete', component: DemandeFormComponent}, 
   ]},
   { path:'offer',component: offerComponent,canActivate:[AuthGuardGuard],children:[
