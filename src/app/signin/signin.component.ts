@@ -41,7 +41,7 @@ export class SigninComponent implements OnInit {
       
         this.SignInForm.reset(),
         this.loaderService.display(false);
-        this.router.navigate(['/search']);   
+        this.router.navigate(['/home']);   
         GlobalServices.setUserName(this.name);     
       },
   error=>{    
