@@ -118,6 +118,22 @@
                   <label>Mot de passe</label>
                     <input type="password" formControlName="password" id="defaultRegisterUserName" class="form-control" placeholder="***********">
                 </div>
+                <div class="col">
+                  <label>confirmer Mot de passe</label>
+                    <input type="password" formControlName="confirmPassword" id="defaultRegisterUserName" class="form-control" placeholder="***********">
+                    <span class="help-block" style="margin-right:100px;" style="color:red" *ngIf="(userForm.get('confirmPassword').touched || userForm.get('confirmPassword').dirty)
+                                  && userForm.get('confirmPassword').errors">
+                                       <span *ngIf="userForm.get('confirmPassword').errors.required">
+                                          password is required
+                                       </span>
+                                       <span *ngIf="userForm.get('confirmPassword').errors.minlength">
+                                        The confirmPassword must be Longer than 3 characters.
+                                       </span>
+                                       <span *ngIf="userForm.get('confirmPassword').errors.mustMatch">
+                                        The Password must match itself.
+                                       </span>
+                                   </span>
+                </div>
             </div>
             <br/>
             <div   class="custom-control custom-radio">
