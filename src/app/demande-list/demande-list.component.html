@@ -120,16 +120,8 @@
                     <a routerLink="/home"
                       ><i class="fa fa-clock-o" aria-hidden="true">{{demande['diff']}} jours</i></a>
                 </li>
-                <li>
-                  <a routerLink="/home"
-                    ><i class="fa fa-money" aria-hidden="true"></i
-                    >{{demande.remuneration}} DH</a
-                  >
-                </li>
-                <li>
-                  <a routerLink="/home"
-                    ><i class="fa fa-user-o"  aria-hidden="true"></i>{{demande.nbrPersonne}}personne(s)</a>
-                </li>
+               
+                
                 <br/>
                 <br/>
                 <li>
@@ -148,10 +140,10 @@
         <div >
             
           <button [routerLink]="['/demande', 'update', demande._id]" class="btn btn-danger"
-            > update</button
+            > Modifier</button
           >
           <button (click)="onDelete(demande)" class="btn btn-light"
-            > delete!</button
+            > Supprimer</button
           >
         </div>
         <!-- item-info -->

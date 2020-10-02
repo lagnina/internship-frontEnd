@@ -25,8 +25,8 @@ export class PostResumeComponent implements OnInit {
 
   ngOnInit() {
     this.stagiaireForm = this.fb.group({
-      nom : [''],
-      prenom : [''],
+      nom : ['', Validators.required],
+      prenom : ['' , Validators.required],
       sexe :[''],
         cin:[''],
         dateNaissance : [''],
@@ -35,7 +35,8 @@ export class PostResumeComponent implements OnInit {
         diplome: [''],
         tele:[null],
         email:[''],
-        description:['']
+        description:[''],
+        niveau:['']
     });
     this.entrepriseForm = this.fb.group({
       nom :[''],
@@ -56,7 +57,7 @@ export class PostResumeComponent implements OnInit {
     }, {
       validator: this.MustMatch('password', 'confirmPassword')
   });
-    this.userForm.valueChanges.subscribe(()=>console.log(this.userForm.value));
+    this.userForm.valueChanges.subscribe(()=>console.log(this.userForm));
   }
 
   onSubmit(){

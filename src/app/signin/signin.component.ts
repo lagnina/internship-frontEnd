@@ -20,7 +20,7 @@ export class SigninComponent implements OnInit {
   constructor(private fb: FormBuilder, private service: SigninService, private router: Router, private login: GlobalServices,
     private loaderService: LoaderService,public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.SignInForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(3)]],
     });
     this.toastr.setRootViewContainerRef(vcr); 

@@ -31,7 +31,7 @@
                               
                                 <div classnom ="form-group">
                                   <label> Nom d'utilisateur  </label>
-                                  <input type="text" formControlName="username" class="form-control" id="usernameId" maxlength="9" placeholder="nom d'utilisateur" >
+                                  <input type="text" formControlName="username" class="form-control" id="usernameId" maxlength="16" placeholder="nom d'utilisateur" >
                                   <span class="help-block" style="color:red" *ngIf="(SignInForm.get('username').touched || SignInForm.get('username').dirty)
                                   && SignInForm.get('username').errors">
                                        <span *ngIf="SignInForm.get('username').errors.required">
