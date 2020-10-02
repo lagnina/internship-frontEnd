@@ -11,10 +11,10 @@
       <!-- breadcrumb -->
 	  <h2 class="title">demande</h2>
 	  <div class="button col-md-3">
-		<a [routerLink]="['./list']" class="btn btn-primary">list demande</a>
+		<a [routerLink]="['./list']" class="btn btn-primary">lister les demandes</a>
 	  </div>
-	  <div class="button col-md-3">
-		<a [routerLink]="['./form']" class="btn btn-primary">Add demande</a>
+	  <div  *ngIf="this.getRole() == '1'"  class="button col-md-3">
+		<a [routerLink]="['./form']" class="btn btn-primary">ajouter une demande</a>
 	  </div>
     </div>
     <!-- banner -->

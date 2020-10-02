@@ -6,22 +6,22 @@
       <li role="presentation" class="active">
         <a href="#hot-jobs" data-toggle="tab">Tous Les offres</a>
       </li>
-      <li role="presentation">
-        <a href="#recent-jobs" data-toggle="tab">Mes offres</a>
+      <li *ngIf="this.getRole() == '0'" role="presentation">
+        <a href="#recent-jobs"  data-toggle="tab">Mes offres</a>
       </li>
      
     </ul>
   </div>
 
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in" id="hot-jobs">
+    <div role="tabpanel" class="tab-pane fade in active" id="hot-jobs" >
       <div *ngFor="let offre of this.offres; let i = index" class="job-ad-item">
         <div class="item-info">
           <div class="item-image-box">
             <div class="item-image">
               <a href="job-details.html"
                 ><img
-                  src="assets/images/job/3.png"
+                  src="assets/images/job/5.png"
                   alt="Image"
                   class="img-responsive"
               /></a>
@@ -73,8 +73,8 @@
           </div>
           <!-- ad-info -->
           <div class="button">
-            <button (click)="onApply(offre)" class="btn btn-primary"
-              > Now</button
+            <button *ngIf="this.getRole()=='1'" (click)="onApply(offre)" class="btn btn-primary"
+              > postuler</button
             >
           </div>
         </div>
@@ -90,7 +90,7 @@
             <div class="item-image">
               <a href="job-details.html"
                 ><img
-                  src="assets/images/job/3.png"
+                  src="assets/images/job/5.png"
                   alt="Image"
                   class="img-responsive"
               /></a>

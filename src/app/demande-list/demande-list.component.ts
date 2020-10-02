@@ -48,5 +48,8 @@ export class DemandeListComponent implements OnInit {
     });
 
   }
+  getRole() {
+    return localStorage.getItem('role');
+}
 
 }

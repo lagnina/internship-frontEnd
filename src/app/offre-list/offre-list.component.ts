@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalServices } from '../_services/GlobalService.component';
 import { offre } from '../pipes/search';
@@ -27,6 +27,7 @@ export class OffreListComponent implements OnInit {
     });
     this.offerService.mesOffreList(localStorage.getItem('UserName')).subscribe((resp)=>{
       this.Mesoffres = resp;
+      
     });
   }
   
@@ -52,4 +53,8 @@ export class OffreListComponent implements OnInit {
     });
 
   }
+
+  getRole() {
+    return localStorage.getItem('role');
+}
 }

@@ -130,15 +130,15 @@ export class GlobalServices {
   var arr = []
     var formData = new FormData();
     arr.push(cv.file);
+console.log(cv.file)
 
 
-Object.keys(arr).forEach(function(item,i){
-  formData.append('avatar', arr[0][i])
-})
+  formData.append('file', arr[0])
 
+console.log(formData)
   
   return this.http
-  .post(url, formData,options)
+  .post(url, cv,options)
   .map(
     // tslint:disable-next-line: whitespace
     (response: Response) => {
@@ -149,6 +149,14 @@ Object.keys(arr).forEach(function(item,i){
   )
   .catch(this.handleerror).subscribe();
 
+ }
+
+ public isLogged(){
+
+  if (localStorage.getItem("UserName") === null) {
+    return false;
+  }
+  return true;
  }
 
  

@@ -12,4 +12,8 @@ export class offerComponent implements OnInit {
   ngOnInit() {
   }
 
+  getRole() {
+    return localStorage.getItem('role');
+}
+
 }

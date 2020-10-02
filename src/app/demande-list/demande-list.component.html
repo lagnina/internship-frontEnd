@@ -3,28 +3,26 @@
   <h4>Latest Jobs</h4>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation">
-      <a href="#hot-jobs" data-toggle="tab">Hot Jobs</a>
+    <li class="active" role="presentation">
+      <a  href="#hot-jobs" data-toggle="tab">liste demandes</a>
     </li>
-    <li role="presentation">
-      <a href="#recent-jobs" data-toggle="tab">Recent Jobs</a>
+    <li *ngIf="this.getRole()=='1'" role="presentation">
+      <a href="#recent-jobs" data-toggle="tab">Mes demandes</a>
     </li>
-    <li role="presentation" class="active">
-      <a href="#popular-jobs" data-toggle="tab">Popular Jobs</a>
-    </li>
+    
   </ul>
 </div>
   
 
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in" id="hot-jobs">
+    <div role="tabpanel" class="tab-pane fade in active" id="hot-jobs" >
       <div *ngFor="let demande of this.demandes; let i = index" class="job-ad-item">
         <div class="item-info">
           <div class="item-image-box">
             <div class="item-image">
               <a href="job-details.html"
                 ><img
-                  src="assets/images/job/3.png"
+                  src="assets/images/job/6.png"
                   alt="Image"
                   class="img-responsive"
               /></a>
@@ -46,7 +44,7 @@
                     ><i class="fa fa-map-marker"
                       aria-hidden="true"
                     ></i
-                    >Nombre de personne {{demande.nbrPersonne}}
+                    > {{demande.ville}}
                   </a>
                 </li>
                 <li>
@@ -75,8 +73,8 @@
           </div>
           <!-- ad-info -->
           <div class="button">
-            <a routerLink="/home" class="btn btn-primary"
-              >Postuler</a
+            <a *ngIf="this.getRole()=='0'" routerLink="/home" class="btn btn-primary"
+              >inviter</a
             >
           </div>
         </div>
@@ -93,7 +91,7 @@
             <div class="item-image">
               <a href="job-details.html"
                 ><img
-                  src="assets/images/job/3.png"
+                  src="assets/images/job/6.png"
                   alt="Image"
                   class="img-responsive"
               /></a>
@@ -115,7 +113,7 @@
                     ><i class="fa fa-map-marker"
                       aria-hidden="true"
                     ></i
-                    >Nombre de personne {{demande.nbrPersonne}}
+                    > {{demande.ville}}
                   </a>
                 </li>
                 <li>

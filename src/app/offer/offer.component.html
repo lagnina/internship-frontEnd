@@ -13,8 +13,8 @@
 	  <div class="button col-md-3">
 		<a [routerLink]="['./list']" class="btn btn-primary">lister les offres</a>
 	  </div>
-	  <div class="button col-md-3">
-		<a [routerLink]="['./form']" class="btn btn-primary">Ajouter Un offre</a>
+	  <div *ngIf="this.getRole() == '0'" class="button col-md-3">
+		<a [routerLink]="['./form']" class="btn btn-primary">Ajouter Une offre</a>
     </div>
     
     </div>

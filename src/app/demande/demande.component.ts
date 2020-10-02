@@ -11,5 +11,7 @@ export class demandeComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  getRole() {
+    return localStorage.getItem('role');
+}
 }
