@@ -52,7 +52,7 @@
   
   
   <button [ngSwitch]="true" class="btn btn-info my-4 btn-block" type="submit">
-    <p *ngSwitchCase="this.includesUpdates()">update</p>
+    <p *ngSwitchCase="this.includesUpdate()">update</p>
     <p *ngSwitchCase="this.includesDelete()">delete</p>
     <p *ngSwitchDefault>Ajouter</p>
     
