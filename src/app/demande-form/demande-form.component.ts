@@ -69,4 +69,13 @@ else if (this.router.url.includes('delete')){
 
 this.router.navigate(['/demande/list']);
 }
+includesUpdate(){
+  if(this.router.url.includes('update')) return true;
+  return false;
+}
+
+includesDelete(){
+  if(this.router.url.includes('delete')) return true;
+  return false;
+}
 }

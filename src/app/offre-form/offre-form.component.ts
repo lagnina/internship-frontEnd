@@ -80,4 +80,14 @@ export class OffreFormComponent implements OnInit {
       this.router.navigate(['/offer/list']);
   }
 
+  includesUpdate(){
+    if(this.router.url.includes('update')) return true;
+    return false;
+  }
+
+  includesDelete(){
+    if(this.router.url.includes('delete')) return true;
+    return false;
+  }
+
 }
