@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  _userApiurl: 'http://localhost:3000/api/'  
+  _userApiurl: 'http://internshipgnina.herokuapp.com/api/'  
 };
